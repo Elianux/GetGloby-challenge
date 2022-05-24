@@ -9,7 +9,9 @@ export default function Results({ results }: { results: Movie[] }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const results = await getMovies(context.query.s as string)
+  const { host } = context.req.headers
+
+  const results = await getMovies(host, context.query.s as string)
 
   return {
     props: { results },

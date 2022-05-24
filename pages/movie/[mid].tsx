@@ -42,7 +42,9 @@ export default function Movie({ movie }: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const movie = await getMovie(context.query.mid as string)
+  const { host } = context.req.headers
+
+  const movie = await getMovie(host, context.query.mid as string)
 
   return {
     props: { movie },

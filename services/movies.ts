@@ -1,11 +1,11 @@
-export const getMovies = async (s: string) => {
-  const res = await fetch(`http://localhost:3000/api/movies?s=${s}`)
+export const getMovies = async (host: any, s: string) => {
+  const res = await fetch(`http://${host}/api/movies?s=${s}`)
   const movies = await res.json()
   return movies
 }
 
-export const getMovie = async (i: string) => {
-  const res = await fetch(`http://localhost:3000/api/movies/${i}`)
+export const getMovie = async (host: string, i: string) => {
+  const res = await fetch(`http://${host}/api/movies/${i}`)
   const movie = await res.json()
   return movie
 }
