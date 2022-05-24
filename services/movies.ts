@@ -7,7 +7,6 @@ export const getMovies = async (s: string) => {
 export const getMovie = async (i: string) => {
   const res = await fetch(`http://localhost:3000/api/movies/${i}`)
   const movie = await res.json()
-  console.log(movie)
   return movie
 }
 

@@ -10,7 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   })
 }
 
-const getMovies = async (title: string): Promise<any> => {
+const getMovies = async (title: string): Promise<Movie> => {
   const url = `${baseURL}&s=${title}`
 
   try {

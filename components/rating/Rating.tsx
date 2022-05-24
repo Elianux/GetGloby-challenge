@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import RatingIcon from './RatingIcon'
 
-export default function Rating({ prevRating, updateRating }) {
+export default function Rating({ updateRating }: any) {
   const [rating, setRating] = useState(0)
   const [hoverRating, setHoverRating] = useState(0)
 
-  const onMouseEnter = (index) => {
+  const onMouseEnter = (index: number) => {
     setHoverRating(index)
   }
 
@@ -13,13 +13,13 @@ export default function Rating({ prevRating, updateRating }) {
     setHoverRating(0)
   }
 
-  const onSaveRating = (index) => {
+  const onSaveRating = (index: number) => {
     setRating(index)
     updateRating(index)
   }
 
   return (
-    <div className='flex cursor-pointer'>
+    <div className='flex cursor-pointer text-3xl'>
       {[1, 2, 3, 4, 5].map((index) => (
         <RatingIcon
           key={index}

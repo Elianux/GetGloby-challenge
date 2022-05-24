@@ -26,8 +26,22 @@ export interface Movie {
   Response: boolean
 }
 
+export interface CommentsProps {
+  mid: string
+}
+
 export interface Comment {
   name: string
   comment: string
+  rating: number
   date: string
+}
+
+export interface RatingIconProps {
+  index: number
+  rating: number
+  hoverRating: number
+  onMouseEnter: (index: number) => void
+  onMouseLeave: () => void
+  onSaveRating: (rating: number) => void
 }

@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import Router from 'next/router'
-import { useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import { MdOutlineFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { getFavoriteStatus, saveFavorite } from '../../services/favorites'
+import { Movie } from '../../utils/types'
 import { parsePoster } from '../../utils/utils'
 
-export default function MovieCard({ movie }: any) {
+export default function MovieCard({ movie }: { movie: Movie }) {
   const [isFav, setIsFav] = useState(false)
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function MovieCard({ movie }: any) {
     // return Router.push(`/movie/${movie.imdbID}?prev=${Router.asPath}`)
   }
 
-  const toggleFav = (e: any) => {
+  const toggleFav = (e: MouseEvent) => {
     e.stopPropagation()
     saveFavorite(movie.imdbID, !isFav)
     const favToggled = getFavoriteStatus(movie.imdbID)

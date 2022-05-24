@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 import { getComments, postComment } from '../../services/comments'
+import { CommentsProps, Comment } from '../../utils/types'
 import Rating from '../rating/Rating'
 import CommentsList from './CommentsList'
 
-export default function Comments({ mid }: any) {
+export default function Comments({ mid }: CommentsProps) {
   const [comment, setComment] = useState({
     name: '',
     comment: '',
     date: new Date().toISOString(),
     rating: 0,
   })
-  const [rating, setRating] = useState(0)
-  const [comments, setComments] = useState<any>([])
+  const [rating, setRating] = useState<number>(0)
+  const [comments, setComments] = useState<Comment[]>([])
 
   useEffect(() => {
     const comments = getComments(mid)
@@ -45,7 +46,7 @@ export default function Comments({ mid }: any) {
 
         <div className='flex mt-5'>
           <p className='text-[#7A8C99] text-bold text-xl mr-5'>Rate:</p>
-          <Rating prevRating={rating} updateRating={setRating} />
+          <Rating updateRating={setRating} />
         </div>
 
         <div className='mt-5'>

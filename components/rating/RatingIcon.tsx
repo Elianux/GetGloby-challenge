@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { AiFillStar } from 'react-icons/ai'
+import { RatingIconProps } from '../../utils/types'
 
 export default function RatingIcon({
   index,
@@ -8,7 +9,7 @@ export default function RatingIcon({
   onMouseEnter,
   onMouseLeave,
   onSaveRating,
-}) {
+}: RatingIconProps) {
   const fill = useMemo(() => {
     if (hoverRating >= index) {
       return 'yellow'

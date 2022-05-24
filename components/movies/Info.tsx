@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
+import { Movie } from '../../utils/types'
 import TitleSection from './TitleSection'
 
-export default function Info({ movie }: any) {
+export default function Info({ movie }: { movie: Movie }) {
   return (
     <>
       <div className='p-5 mt-5 ml-5 text-left'>

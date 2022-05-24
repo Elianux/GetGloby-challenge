@@ -4,10 +4,12 @@ import Comments from '../../components/comments/Comments'
 import { getMovie } from '../../services/movies'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import Router from 'next/router'
-import { parseDuration } from '../../utils/utils'
-import TitleSection from '../../components/movies/TitleSection'
 import Info from '../../components/movies/Info'
+//import { Movie } from '../../utils/types'
 
+// This fails because of the importe statment above
+// Error: *Module parse failed: Identifier 'Movie' has already been declared*
+// export default function Movie({ movie }: { movie: Movie }) {
 export default function Movie({ movie }: any) {
   const handleClick = () => {
     // Fix return to search results instead of home page
@@ -25,7 +27,7 @@ export default function Movie({ movie }: any) {
           />
           <Image
             src={movie.Poster}
-            alt={movie.title}
+            alt={movie.Title}
             width={400}
             height={560}
           />
