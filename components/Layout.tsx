@@ -17,7 +17,7 @@ export default function Layout({ children }: LayoutProps) {
   const showSearchbar = router.pathname.split('/')[1] === 'movie'
 
   return (
-    <div className='bg-[#202020] font-poppins'>
+    <div className='bg-[#202020]'>
       <Head>
         <title>Challenge</title>
       </Head>
