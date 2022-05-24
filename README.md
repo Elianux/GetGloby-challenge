@@ -17,8 +17,6 @@ Backend running on Next.js API functionality (/pages/api) and browser local stor
 - Database for user data storage
 - Unit testing not implemented due to time constraints
 - Desing based on unit tests
-- User favorites storage not implemented due to time constraints
-- Show latest comments first not implemented due to time constraints
 - Refine styling and add animations
 
 ### Project setup
