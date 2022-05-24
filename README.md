@@ -24,3 +24,6 @@ Backend running on Next.js API functionality (/pages/api) and browser local stor
 ### Project setup
 1. Run **yarn install** to install dependencies
 2. Run **yarn dev** to start en development mode
+
+### Deployed Application
+https://get-globy-challenge.vercel.app/
