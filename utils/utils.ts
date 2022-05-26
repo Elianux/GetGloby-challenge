@@ -13,9 +13,12 @@ export const parseDuration = (duration: string): string => {
   return `${hours}h ${minutes}m`
 }
 
-// order commnenets by date
-// export const orderComments = (comments: Comment[]): any => {
-//   return comments.sort((a, b) => {
-//     return new Date(b.date).getTime() - new Date(a.date).getTime()
-//   })
-// }
+export const getCurrentDateDDMMYYYYHHMM = (): string => {
+  const date = new Date(Date.now())
+  const day = date.getDate()
+  const month = date.getMonth() + 1
+  const year = date.getFullYear()
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+  return `${day}/${month}/${year} ${hours}:${minutes}`
+}

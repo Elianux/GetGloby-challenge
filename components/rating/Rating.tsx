@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import RatingIcon from './RatingIcon'
 
-export default function Rating({ updateRating }: any) {
+export default function Rating({ updateRating, classes }: any) {
   const [rating, setRating] = useState(0)
   const [hoverRating, setHoverRating] = useState(0)
 
@@ -19,7 +19,7 @@ export default function Rating({ updateRating }: any) {
   }
 
   return (
-    <div className='flex cursor-pointer text-3xl'>
+    <div className={`flex cursor-pointer ${classes}`}>
       {[1, 2, 3, 4, 5].map((index) => (
         <RatingIcon
           key={index}

@@ -21,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
       <Head>
         <title>Challenge</title>
       </Head>
-      <div className='text-center md:mx-auto w-10/12 min-h-screen'>
+      <div className='text-center sm:mx-20 md:mx-auto w-10/12 min-h-screen'>
         <div className='mb-10'>
           <Header />
           {!showSearchbar && <SearchBar />}

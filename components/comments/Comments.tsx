@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getComments, postComment } from '../../services/comments'
 import { CommentsProps, Comment } from '../../utils/types'
+import { getCurrentDateDDMMYYYYHHMM } from '../../utils/utils'
 import Rating from '../rating/Rating'
 import CommentsList from './CommentsList'
 
@@ -8,7 +9,7 @@ export default function Comments({ mid }: CommentsProps) {
   const [comment, setComment] = useState({
     name: '',
     comment: '',
-    date: new Date().toISOString(),
+    date: '',
     rating: 0,
   })
   const [rating, setRating] = useState<number>(0)
@@ -22,19 +23,20 @@ export default function Comments({ mid }: CommentsProps) {
   const handleClick = () => {
     const updatedComment = {
       ...comment,
-      date: new Date().toISOString(),
+      date: getCurrentDateDDMMYYYYHHMM(),
       rating,
     }
-    console.log(updatedComment)
-    setComment({ ...updatedComment })
-    console.log(comment)
-    const updatedComments = [...comments, comment]
+
+    const updatedComments = [...comments, updatedComment]
+
     setComments(updatedComments)
+
     postComment(mid, updatedComments)
+
     setComment({
       name: '',
       comment: '',
-      date: new Date().toISOString(),
+      date: '',
       rating: 0,
     })
   }
@@ -46,7 +48,7 @@ export default function Comments({ mid }: CommentsProps) {
 
         <div className='flex mt-5'>
           <p className='text-[#7A8C99] text-bold text-xl mr-5'>Rate:</p>
-          <Rating updateRating={setRating} />
+          <Rating updateRating={setRating} classes='text-3xl' />
         </div>
 
         <div className='mt-5'>
