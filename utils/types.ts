@@ -45,3 +45,8 @@ export interface RatingIconProps {
   onMouseLeave: () => void
   onSaveRating: (rating: number) => void
 }
+
+export interface Rating {
+  Source: string
+  Value: string
+}
