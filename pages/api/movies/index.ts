@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Movie } from '../../../utils/types'
+import { MovieShort } from '../../../utils/types'
 
-const baseURL = `${process.env.NEXT_PUBLIC_OMDB_URL}?apikey=${process.env.NEXT_PUBLIC_OMDB_APIKEY}`
+const baseURL = `${process.env.NEXT_PUBLIC_OMDB_URL}?apikey=${process.env.NEXT_PUBLIC_OMDB_APIKEY}&type=movie`
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { s } = req.query
@@ -10,7 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   })
 }
 
-const getMovies = async (title: string): Promise<Movie> => {
+const getMovies = async (title: string): Promise<MovieShort> => {
   const url = `${baseURL}&s=${title}`
 
   try {

@@ -3,10 +3,10 @@ import Router from 'next/router'
 import { MouseEvent, useEffect, useState } from 'react'
 import { MdOutlineFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { getFavoriteStatus, saveFavorite } from '../../services/favorites'
-import { Movie } from '../../utils/types'
+import { MovieShort } from '../../utils/types'
 import { parsePoster } from '../../utils/utils'
 
-export default function MovieCard({ movie }: { movie: Movie }) {
+export default function MovieCard({ movie }: { movie: MovieShort }) {
   const [isFav, setIsFav] = useState(false)
 
   useEffect(() => {

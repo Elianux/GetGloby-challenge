@@ -26,6 +26,14 @@ export interface Movie {
   Response: boolean
 }
 
+export interface MovieShort{
+  Title: string
+  Year: string
+  imdbID: string
+  Type: string
+  Poster: string
+}
+
 export interface CommentsProps {
   mid: string
 }

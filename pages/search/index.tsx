@@ -2,10 +2,10 @@ import { GetServerSideProps } from 'next'
 import MovieGrid from '../../components/movies/MovieGrid'
 import NoResultsPage from '../../components/NoResultsPage'
 import { getMovie, getMovies } from '../../services/movies'
-import { Movie } from '../../utils/types'
+import { Movie, MovieShort } from '../../utils/types'
 import { getAverageRating, parseRatings } from '../../utils/utils'
 
-export default function Results({ results }: { results: Movie[] }) {
+export default function Results({ results }: { results: MovieShort[] }) {
   return results.length ? <MovieGrid movies={results} /> : <NoResultsPage />
 }
 
@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const movies = await getMovies(host, context.query.s as string)
 
   const moviesPromises = movies.map(
-    async (movie: any) => await getMovie(host, movie.imdbID)
+    async (movie: MovieShort) => await getMovie(host, movie.imdbID)
   )
 
   const moviesWithDetails = await Promise.all(moviesPromises)
@@ -29,8 +29,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     return avgB - avgA
   })
-
-  console.log(results)
 
   return {
     props: { results },
