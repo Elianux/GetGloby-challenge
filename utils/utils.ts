@@ -41,6 +41,8 @@ export const parseRatings = (ratings: Rating[]) => {
       const r = rating.Value.split('/')[0]
       return parseInt(r)
     }
+
+    return 0
   })
 }
 
