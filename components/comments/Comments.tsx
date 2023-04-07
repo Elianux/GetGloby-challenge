@@ -14,6 +14,7 @@ export default function Comments({ mid }: CommentsProps) {
   })
   const [rating, setRating] = useState<number>(0)
   const [comments, setComments] = useState<Comment[]>([])
+  const [clearRating, setClearRating] = useState(false)
 
   useEffect(() => {
     const comments = getComments(mid)
@@ -39,6 +40,8 @@ export default function Comments({ mid }: CommentsProps) {
       date: '',
       rating: 0,
     })
+
+    setClearRating(true)
   }
 
   return (
@@ -48,7 +51,7 @@ export default function Comments({ mid }: CommentsProps) {
 
         <div className='flex mt-5'>
           <p className='text-[#7A8C99] text-bold text-xl mr-5'>Rate:</p>
-          <Rating updateRating={setRating} classes='text-3xl' />
+          <Rating updateRating={setRating} clearRating={clearRating} classes='text-3xl' />
         </div>
 
         <div className='mt-5'>

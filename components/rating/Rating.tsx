@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import RatingIcon from './RatingIcon'
 
-export default function Rating({ updateRating, classes }: any) {
+export default function Rating({ updateRating, clearRating, classes }: any) {
   const [rating, setRating] = useState(0)
   const [hoverRating, setHoverRating] = useState(0)
+ 
 
   const onMouseEnter = (index: number) => {
     setHoverRating(index)
@@ -17,6 +18,12 @@ export default function Rating({ updateRating, classes }: any) {
     setRating(index)
     updateRating(index)
   }
+
+  useEffect(() => {
+    if (clearRating) {
+      setRating(0)
+    }
+  }, [clearRating])
 
   return (
     <div className={`flex cursor-pointer ${classes}`}>
