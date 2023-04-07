@@ -1,36 +1,36 @@
-import { GetServerSideProps } from 'next'
-import MovieGrid from '../../components/movies/MovieGrid'
-import NoResultsPage from '../../components/NoResultsPage'
-import { getMovie, getMovies } from '../../services/movies'
-import { Movie, MovieShort } from '../../utils/types'
-import { getAverageRating, parseRatings } from '../../utils/utils'
+import { GetServerSideProps } from "next";
+import MovieGrid from "../../components/movies/MovieGrid";
+import NoResultsPage from "../../components/NoResultsPage";
+import { getMovie, getMovies } from "../../services/movies";
+import { Movie, MovieShort } from "../../utils/types";
+import { getAverageRating, parseRatings } from "../../utils/utils";
 
 export default function Results({ results }: { results: MovieShort[] }) {
-  return results.length ? <MovieGrid movies={results} /> : <NoResultsPage />
+  return results.length ? <MovieGrid movies={results} /> : <NoResultsPage />;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { host } = context.req.headers
+export const getServerSideProps: GetServerSideProps = async context => {
+  const { host } = context.req.headers;
 
-  const movies = await getMovies(host, context.query.s as string)
+  const movies = await getMovies(host, context.query.s as string);
 
   const moviesPromises = movies.map(
     async (movie: MovieShort) => await getMovie(host, movie.imdbID)
-  )
+  );
 
-  const moviesWithDetails = await Promise.all(moviesPromises)
+  const moviesWithDetails = await Promise.all(moviesPromises);
 
   const results = moviesWithDetails.sort((a: Movie, b: Movie) => {
-    const ratingA = parseRatings(a.Ratings ?? [])
-    const ratingB = parseRatings(b.Ratings ?? [])
+    const ratingA = parseRatings(a.Ratings ?? []);
+    const ratingB = parseRatings(b.Ratings ?? []);
 
-    const avgA = getAverageRating(ratingA)
-    const avgB = getAverageRating(ratingB)
+    const avgA = getAverageRating(ratingA);
+    const avgB = getAverageRating(ratingB);
 
-    return avgB - avgA
-  })
+    return avgB - avgA;
+  });
 
   return {
     props: { results },
-  }
-}
+  };
+};
