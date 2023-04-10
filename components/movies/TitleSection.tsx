@@ -1,7 +1,7 @@
 import { Movie } from '../../utils/types'
 import { parseDuration } from '../../utils/utils'
 
-export function TitleSection({ movie }: { movie: Movie }) {
+export default function TitleSection({ movie }: { movie: Movie }) {
   return (
     <>
       <h1 className='font-extrabold text-5xl text-white'>{movie.Title}</h1>
