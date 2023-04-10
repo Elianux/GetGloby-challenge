@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { Movie } from '../../utils/types'
-import TitleSection from './TitleSection'
+import { TitleSection } from './TitleSection'
 
 export default function Info({ movie }: { movie: Movie }) {
   return (
